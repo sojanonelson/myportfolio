@@ -1,25 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, useNavigate, useLocation } from "react-router-dom";
+import "tailwindcss/tailwind.css";
 
-function App() {
+import About from "./components/About";
+import Project from "./components/Project";
+import Home from "./components/Home";
+import Contact from "./components/Contact";
+import "./App.css"
+
+const App = () => (
+  <Router>
+    <MainContent />
+  </Router>
+);
+
+const MainContent = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const sectionId = location.pathname.substring(1);
+    if (sectionId) {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar navigate={navigate} />
+      <Home/>
+      <About />
+      <Project/>
+      <Contact/>
     </div>
   );
-}
+};
+
+const Navbar = ({ navigate }) => (
+  <nav className="fixed top-0 left-0 w-full bg-[#101010] py-5 z-10  select-none text-white poppins-bold">
+    <ul className="flex justify-center  space-x-5 p-4">
+      <NavItem navigate={navigate} to="home" label="Home" />
+      <NavItem navigate={navigate} to="about" label="About" />
+      <NavItem navigate={navigate} to="projects" label="Projects" />
+      <NavItem navigate={navigate} to="contact" label="Contact" />
+    </ul>
+  </nav>
+);
+
+const NavItem = ({ navigate, to, label }) => (
+  <li>
+    <button
+      onClick={() => navigate(`/${to === "home" ? "" : to}`)}
+      className="hover:text-yellow-400 focus:outline-none"
+    >
+      {label}
+    </button>
+  </li>
+);
+
+
+
+
 
 export default App;
