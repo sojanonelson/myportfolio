@@ -79,7 +79,7 @@ const Home = () => {
             transition={{ duration: 1, delay: 0.7 }}
           >
             <a
-              href="your-resume.pdf"
+              href="https://drive.google.com/file/d/1RPy_6Fr41EV15AoPSONkonreb-9o7uSm/view?usp=sharing"
               download
               className="px-4 py-2 animate-pulse  bg-blue-600 hover:bg-blue-800 text-white rounded-lg font-semibold flex items-center space-x-2"
             >
