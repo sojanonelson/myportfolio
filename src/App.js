@@ -25,10 +25,10 @@ const MainContent = () => {
     const incrementAndFetchCount = async () => {
       try {
         // Increment the view count
-        await axios.post("http://localhost:5000/increment");
+        await axios.post("https://myportfolio-8gej.onrender.com/increment");
 
         // Fetch the updated view count
-        const response = await axios.get("http://localhost:5000/count");
+        const response = await axios.get("https://myportfolio-8gej.onrender.com/count");
         setViewCount(response.data.count);
       } catch (error) {
         console.error("Error fetching or incrementing view count:", error);

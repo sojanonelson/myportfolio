@@ -16,7 +16,7 @@ const Visit = mongoose.model('Visit', visitSchema);
 
 // Increment visit count
 app.post('/increment', async (req, res) => {
-  console.log("Increment")
+  
   let visit = await Visit.findOne();
   if (!visit) visit = await Visit.create({ count: 1 });
   else {
