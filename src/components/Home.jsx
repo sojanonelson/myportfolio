@@ -5,7 +5,8 @@ import Developer from '../assets/developer.json'; // Replace with your Lottie an
 import Particles from '../components/Particles'; // Import the Particles component
 import { Helmet } from 'react-helmet';
 
-const Home = () => {
+
+const Home = ({viewCount}) => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -22,6 +23,7 @@ const Home = () => {
       <Particles />
       <Helmet>
     <title>Sojan O Nelson | Software Developer</title>
+    
     <meta name="description" content="Portfolio of Sojan O Nelson, a skilled Software Developer." />
     <meta name="keywords" content="Sojan, Software Developer, Web Developer" />
     
@@ -37,7 +39,7 @@ const Home = () => {
         >
           <div className="flex-col">
             <motion.h1
-              className="text-3xl md:text-5xl  font-bold mb-4"
+              className=" text-xl lg:text-3xl md:text-5xl poppins-bold  font-bold mb-2 lg:mb-4"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -45,12 +47,12 @@ const Home = () => {
               Hi there 👋🏼,
             </motion.h1>
             <div className="flex flex-wrap justify-center md:justify-start items-center space-x-1 md:space-x-5">
-              <h1 className="text-3xl md:text-5xl px-2 lg:px-0 font-bold">I'm</h1>
+              <h1 className="text-3xl md:text-5xl px-2 lg:px-0 poppins-bold font-bold">I'm</h1>
               <div className="flex space-x-1 md:space-x-2">
   {name.split("").map((letter, index) => (
     <motion.span
       key={index}
-      className="text-4xl md:text-5xl text-orange-400 font-bold"
+      className="text-4xl poppins-bold md:text-5xl text-orange-400 font-bold"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -64,13 +66,14 @@ const Home = () => {
           </div>
 
           <motion.p
-            className="text-lg md:text-2xl font-regular py-2 mb-6"
+            className="text-lg md:text-2xl font-regular poppins-regular py-2 mb-6"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
             Software Developer
           </motion.p>
+        { viewCount ? <p className="text-gray-300 poppins-regular text-xl">Portfolio views: {viewCount}</p> : null }
 
           <motion.div
             className="flex flex-wrap justify-center md:justify-start space-x-3 space-y-2 mt-6"

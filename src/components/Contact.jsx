@@ -13,7 +13,7 @@ const Contact = () => {
     
   </Helmet>
       <h1 className="text-2xl font-light text-orange-400 mb-2">Get in Touch</h1>
-      <h1 className="text-6xl poppins-bold  text-white mb-10">Contact Me</h1>
+      <h1 className="lg:text-6xl text-xl poppins-bold  text-white mb-10">Contact Me</h1>
       
       <motion.div
         className="flex gap-8 bg-slate-800 px-9 py-2 rounded-3xl"
@@ -63,6 +63,7 @@ const Contact = () => {
           <FaEnvelope className="hover:text-yellow-400 transition-colors duration-300" />
         </motion.a>
       </motion.div>
+      <p className='text-gray-400 py-5'>Portfolio last update on 12th Dec 2024</p>
     </section>
   );
 };

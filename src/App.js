@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { BrowserRouter as Router, useNavigate, useLocation } from "react-router-dom";
 import "tailwindcss/tailwind.css";
-
+import axios from "axios";
 import About from "./components/About";
 import Project from "./components/Project";
 import Home from "./components/Home";
@@ -18,6 +18,26 @@ const MainContent = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [viewCount, setViewCount] = useState(0);
+
+  // Increment and fetch view count on mount
+  useEffect(() => {
+    const incrementAndFetchCount = async () => {
+      try {
+        // Increment the view count
+        await axios.post("http://localhost:5000/increment");
+
+        // Fetch the updated view count
+        const response = await axios.get("http://localhost:5000/count");
+        setViewCount(response.data.count);
+      } catch (error) {
+        console.error("Error fetching or incrementing view count:", error);
+      }
+    };
+
+    incrementAndFetchCount();
+  }, []);
+
   useEffect(() => {
     const sectionId = location.pathname.substring(1);
     if (sectionId) {
@@ -30,7 +50,7 @@ const MainContent = () => {
   return (
     <div className="App">
       <Navbar navigate={navigate} />
-      <Home/>
+      <Home viewCount={viewCount}/>
       <About />
       <Project/>
       <Contact/>
