@@ -82,7 +82,7 @@ const Home = ({viewCount}) => {
             transition={{ duration: 1, delay: 0.7 }}
           >
             <a
-              href="https://drive.google.com/file/d/1RPy_6Fr41EV15AoPSONkonreb-9o7uSm/view?usp=sharing"
+              href="https://drive.google.com/file/d/1DyPfWou7L4kro2tIsQqcDgzhsXvhbsmZ/view?usp=drive_link"
               download
               className="px-4 py-2 animate-pulse  bg-blue-600 hover:bg-blue-800 text-white rounded-lg font-semibold flex items-center space-x-2"
             >
