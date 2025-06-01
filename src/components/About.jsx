@@ -1,185 +1,335 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 import Profile from "../assets/profile.jpg";
 import { Helmet } from 'react-helmet';
+import { Shield, Code, Database, Server, Terminal, GraduationCap, Award, Cpu } from "lucide-react";
 
 const About = () => {
   const [activeSection, setActiveSection] = useState("skills");
   const [isHovered, setIsHovered] = useState(false);
 
   const skills = {
+    cybersecurity: [
+      "Network Security",
+      "Ethical Hacking",
+      "Vulnerability Assessment",
+      "Penetration Testing",
+      "Security Auditing",
+      "Burp Suite",
+      "Nmap",
+      "Metasploit"
+    ],
     frontend: [
       "React.js",
       "Next.js",
       "Vite.js",
-      "Python",
       "Tailwind CSS",
       "Bootstrap",
-      "Figma",
-      "Photoshop",
+      "Framer Motion",
+      "Figma"
     ],
-    backend: ["Node.js", "Python"],
-    database: ["MongoDB"],
-    developmentTools: ["Visual Studio Code", "Git","Postman","Insomania"],
+    backend: [
+      "Node.js",
+      "Express.js",
+      "Python",
+      "REST APIs",
+      "Authentication",
+      "JWT"
+    ],
+    database: [
+      "MongoDB",
+      "Firebase",
+      "MySQL"
+    ],
+    tools: [
+      "Visual Studio Code",
+      "Git/GitHub",
+      "Postman",
+      "Insomnia",
+      "Docker",
+      "Linux"
+    ]
   };
 
-  const education = (
-    <div className="text-white mb-2">
-      <p>
-        BCA in Cloud Computing & Ethical Hacking - East West College of Management, Bangalore (09/2022 - Present)
-      </p>
-    </div>
-  );
+  const education = [
+    {
+      degree: "BCA in Cloud Computing & Ethical Hacking",
+      institution: "East West College of Management, Bangalore",
+      period: "09/2022 - Present",
+      courses: [
+        "Advanced Network Security",
+        "Cloud Infrastructure",
+        "Web Application Security",
+        "Cryptography"
+      ]
+    }
+  ];
 
-  const certifications = (
-    <ul className="list-disc list-inside text-white">
-      <li>Internship Completion Certificate (01/2023 - 03/2023)</li>
-      <li>Attended Cyber Security Webinar (02/2023)</li>
-    </ul>
-  );
+  const certifications = [
+    {
+      name: "Internship Completion Certificate",
+      issuer: "Cyber Security Firm",
+      date: "01/2023 - 03/2023"
+    },
+    {
+      name: "Cyber Security Webinar Attendee",
+      issuer: "Tech Conference",
+      date: "02/2023"
+    }
+  ];
 
-  const projects = (
-    <ul className="list-disc list-inside text-white mb-6">
-      <li>ChordBeats: A digital studio web application for creating music beats and virtual instruments.</li>
-      <li>Personal Voice Assistant: A voice-controlled application to perform various computer tasks.</li>
-      <li>Chatbot: Frontend and backend integrated with OpenAI API</li>
-      <li>Stack Overflow Clone: A replica of Stack Overflow with full Q&A features</li>
-      <li>Tourist Agency Portfolio: Portfolio for a tourist agency showcasing destinations and services</li>
-      <li>E-commerce Web Application: An online store with cart, checkout, and user authentication</li>
-      <a href="/projects" className="poppins-medium text-orange-400 animate-pulse">Know more</a>
-    </ul>
-  );
+  const projects = [
+    {
+      name: "ChordBeats",
+      description: "Digital studio web application for creating music beats and virtual instruments",
+      tech: ["React", "Node.js", "Web Audio API"]
+    },
+    {
+      name: "Security Dashboard",
+      description: "Real-time network monitoring tool with threat detection",
+      tech: ["Python", "Django", "Wireshark API"]
+    },
+    {
+      name: "E-commerce Platform",
+      description: "Secure online store with payment gateway and admin panel",
+      tech: ["Next.js", "MongoDB", "Stripe API"]
+    },
+    {
+      name: "Vulnerability Scanner",
+      description: "Automated web application security scanner",
+      tech: ["Python", "BeautifulSoup", "Nmap"]
+    }
+  ];
 
-  const tabIndex = {
-    skills: 0,
-    education: 1,
-    certifications: 2,
-    projects: 3,
+  const sectionIcons = {
+    skills: <Terminal className="mr-2" size={18} />,
+    education: <GraduationCap className="mr-2" size={18} />,
+    certifications: <Award className="mr-2" size={18} />,
+    projects: <Cpu className="mr-2" size={18} />
+  };
+
+  const skillIcons = {
+    cybersecurity: <Shield size={18} className="mr-2 text-green-400" />,
+    frontend: <Code size={18} className="mr-2 text-green-400" />,
+    backend: <Server size={18} className="mr-2 text-green-400" />,
+    database: <Database size={18} className="mr-2 text-green-400" />,
+    tools: <Terminal size={18} className="mr-2 text-green-400" />
   };
 
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col md:flex-row justify-center px-10 items-center p-5 md:p-10 bg-[#1a1a1a]"
+      className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#111111] py-20 px-4 sm:px-6 lg:px-8"
     >
-       <Helmet>
-    <title>Sojan O Nelson | Software Developer</title>
-    <meta name="description" content="Portfolio of Sojan O Nelson, a skilled Software Developer." />
-    <meta name="keywords" content="Sojan, Software Developer, Web Developer" />
-    
-  </Helmet>
-      <div className="w-full md:w-1/3 mx-2 flex mb-5 md:mb-0">
-        
-         <motion.img
-      src={Profile}
-      alt="Sojan"
-      className={`w-2/3 md:w-[70%] hidden lg:block justify-self-end mx-10 transition-all duration-2000 border-white border-2 p-1 rounded-full ${
-        isHovered ? "" : "grayscale "
-      }`}
-      onHoverStart={() => setIsHovered(true)}
-      transition={{ duration: 2 }}
-    />
-      </div>
-      <div className="flex flex-col h-full w-full md:w-2/3 mx-2">
-        <h1 className="text-left select-none text-3xl md:text-4xl poppins-bold text-white mb-4">
-          About Me
-        </h1>
-        <motion.img
-          src={Profile}
-          alt="Sojan O Nelson - Software Developer"
-          className="w-1/3 lg:hidden md:w-[70%] border-white border-2 my-4 rounded-full "
-         
-          transition={{ duration: 0.3 }}
-        />
+      <Helmet>
+        <title>Sojan O Nelson | Cybersecurity & Full-Stack Developer</title>
+        <meta name="description" content="Cybersecurity Analyst and MERN Stack Developer with expertise in building secure web applications" />
+        <meta name="keywords" content="Sojan, Cybersecurity, Ethical Hacking, MERN Developer, Web Security" />
+      </Helmet>
 
-        <p className="text-sm md:text-xl select-none text-white poppins-light text-justify mb-4">
-          I specialize in using modern technologies such as React.js, Next.js,
-          and Node.js to build dynamic applications that are both visually
-          appealing and functionally robust. My experience spans across various
-          domains, including web development, UI/UX design, and full-stack
-          integration. I enjoy collaborating with teams to bring ideas to life,
-          consistently delivering high-quality work that meets deadlines and
-          exceeds expectations.
-        </p>
+      <div className="max-w-7xl mx-auto">
+        <motion.h1 
+          className="text-4xl md:text-5xl font-bold mb-16 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-white">
+            About Me
+          </span>
+        </motion.h1>
 
-        <div className="flex flex-wrap space-x-2 md:space-x-6 mb-6 select-none relative">
-          {Object.keys(tabIndex).map((section) => (
-            <button
-              key={section}
-              className={`relative select-none  text-lg text-white ${activeSection === section ? "font-bold" : ""} mb-2 md:mb-0`}
-              onClick={() => setActiveSection(section)}
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+          {/* Profile Image */}
+          <motion.div 
+            className="lg:w-1/3 flex justify-center"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
+            <div className="relative group">
+              <motion.img
+                src={Profile}
+                alt="Sojan O Nelson"
+                className={`w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-green-400/30 transition-all duration-500 `}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              />
+              <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-green-400/50 transition-all duration-500"></div>
+              <div className="absolute -inset-2 rounded-full bg-green-400/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </motion.div>
+
+          {/* Content */}
+          <div className="lg:w-2/3">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
-              {activeSection === section && (
-                <motion.div
-                  className="absolute left-0 -bottom-1 w-full h-1 bg-orange-500"
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%", left: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              )}
-            </button>
-          ))}
-        </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                Cybersecurity Analyst & MERN-Stack Developer
+              </h2>
+              
+              <p className="text-gray-300 mb-8 leading-relaxed">
+                I specialize in building <span className="text-green-400 font-medium">secure, scalable web applications</span> with modern technologies. 
+                With dual expertise in <span className="text-green-400 font-medium">cybersecurity</span> and <span className="text-green-400 font-medium">full-stack development</span>, 
+                I create solutions that are not just functional but hardened against modern threats. 
+                My work spans ethical hacking, penetration testing, and developing robust applications 
+                with React, Node.js, and MongoDB.
+              </p>
 
-        <div className="mt-8">
-          {activeSection === "skills" && (
-            <div>
-              <h2 className="text-3xl text-white font-bold select-none mb-4">Skills</h2>
-              <div className="grid md:grid-cols-2 select-none  grid-cols-2 lg:flex-row lg:flex gap-6">
-                <div className="text-white mb-6">
-                  <h3 className="text-xl font-semibold text-orange-400">Frontend:</h3>
-                  <ul className="list-disc list-inside">
-                    {skills.frontend.map((skill, index) => (
-                      <li key={index}>{skill}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="text-white mb-6">
-                  <h3 className="text-xl font-semibold text-orange-400">Backend:</h3>
-                  <ul className="list-disc list-inside">
-                    {skills.backend.map((skill, index) => (
-                      <li key={index}>{skill}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="text-white mb-6">
-                  <h3 className="text-xl font-semibold text-orange-400">Database:</h3>
-                  <ul className="list-disc list-inside">
-                    {skills.database.map((skill, index) => (
-                      <li key={index}>{skill}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="text-white mb-6">
-                  <h3 className="text-xl font-semibold text-orange-400">Development Tools:</h3>
-                  <ul className="list-disc list-inside">
-                    {skills.developmentTools.map((tool, index) => (
-                      <li key={index}>{tool}</li>
-                    ))}
-                  </ul>
+              {/* Navigation Tabs */}
+              <div className="mb-8 border-b border-gray-800">
+                <div className="flex flex-wrap gap-4">
+                  {Object.keys(sectionIcons).map((section) => (
+                    <button
+                      key={section}
+                      onClick={() => setActiveSection(section)}
+                      className={`relative px-4 py-3 text-sm font-medium flex items-center transition-colors ${
+                        activeSection === section 
+                          ? 'text-green-400' 
+                          : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      {sectionIcons[section]}
+                      {section.charAt(0).toUpperCase() + section.slice(1)}
+                      {activeSection === section && (
+                        <motion.div 
+                          className="absolute bottom-0 left-0 w-full h-0.5 bg-green-400"
+                          layoutId="underline"
+                        />
+                      )}
+                    </button>
+                  ))}
                 </div>
               </div>
-            </div>
-          )}
-          {activeSection === "education" && (
-            <div>
-              <h2 className="text-3xl text-white font-bold mb-4">Education</h2>
-              {education}
-            </div>
-          )}
-          {activeSection === "certifications" && (
-            <div>
-              <h2 className="text-3xl text-white font-bold mb-4">Certifications</h2>
-              {certifications}
-            </div>
-          )}
-          {activeSection === "projects" && (
-            <div>
-              <h2 className="text-3xl text-white font-bold mb-4">Projects</h2>
-              {projects}
-            </div>
-          )}
+
+              {/* Content Sections */}
+              <div className="bg-[#0a0a0a] rounded-xl p-6 border border-gray-800">
+                {/* Skills Section */}
+                {activeSection === "skills" && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <h3 className="text-2xl font-bold text-white mb-6">Technical Skills</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {Object.entries(skills).map(([category, items]) => (
+                        <div key={category} className="bg-[#111111] p-5 rounded-lg border border-gray-800 hover:border-green-400/30 transition-colors">
+                          <div className="flex items-center mb-3">
+                            {skillIcons[category]}
+                            <h4 className="text-lg font-semibold text-green-400 capitalize">
+                              {category.replace(/([A-Z])/g, ' $1')}
+                            </h4>
+                          </div>
+                          <ul className="space-y-2">
+                            {items.map((skill, index) => (
+                              <li key={index} className="flex items-start">
+                                <span className="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 mr-2 flex-shrink-0"></span>
+                                <span className="text-gray-300">{skill}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Education Section */}
+                {activeSection === "education" && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <h3 className="text-2xl font-bold text-white mb-6">Education</h3>
+                    <div className="space-y-6">
+                      {education.map((edu, index) => (
+                        <div key={index} className="bg-[#111111] p-5 rounded-lg border border-gray-800 hover:border-green-400/30 transition-colors">
+                          <h4 className="text-xl font-semibold text-green-400">{edu.degree}</h4>
+                          <p className="text-gray-300 mt-1">{edu.institution}</p>
+                          <p className="text-gray-400 text-sm mt-2">{edu.period}</p>
+                          
+                          <div className="mt-4">
+                            <h5 className="text-gray-400 font-medium">Key Courses:</h5>
+                            <ul className="mt-2 space-y-1">
+                              {edu.courses.map((course, i) => (
+                                <li key={i} className="flex items-start">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 mr-2 flex-shrink-0"></span>
+                                  <span className="text-gray-300">{course}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Certifications Section */}
+                {activeSection === "certifications" && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <h3 className="text-2xl font-bold text-white mb-6">Certifications</h3>
+                    <div className="space-y-4">
+                      {certifications.map((cert, index) => (
+                        <div key={index} className="bg-[#111111] p-5 rounded-lg border border-gray-800 hover:border-green-400/30 transition-colors">
+                          <div className="flex items-start">
+                            <Award className="text-green-400 mr-3 mt-0.5 flex-shrink-0" size={18} />
+                            <div>
+                              <h4 className="text-lg font-semibold text-green-400">{cert.name}</h4>
+                              <p className="text-gray-300">{cert.issuer}</p>
+                              <p className="text-gray-400 text-sm mt-1">{cert.date}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Projects Section */}
+                {activeSection === "projects" && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <h3 className="text-2xl font-bold text-white mb-6">Notable Projects</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {projects.map((project, index) => (
+                        <div key={index} className="bg-[#111111] p-5 rounded-lg border border-gray-800 hover:border-green-400/30 transition-colors">
+                          <h4 className="text-lg font-semibold text-green-400">{project.name}</h4>
+                          <p className="text-gray-300 mt-2">{project.description}</p>
+                          
+                          <div className="mt-3">
+                            <h5 className="text-gray-400 text-sm font-medium">Technologies:</h5>
+                            <div className="flex flex-wrap gap-2 mt-2">
+                              {project.tech.map((tech, i) => (
+                                <span key={i} className="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <a 
+                      href="/projects" 
+                      className="inline-flex items-center mt-6 text-green-400 hover:text-green-300 transition-colors"
+                    >
+                      View all projects
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

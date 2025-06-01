@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://sojanonelson54:YbBMfoaXfV40ewch@cluster0.vvjc2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://sojanonelson54:YbBMfoaXfV40ewch@cluster0.vvjc2.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const visitSchema = new mongoose.Schema({
   count: { type: Number, default: 0 }

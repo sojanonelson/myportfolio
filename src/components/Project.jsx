@@ -89,29 +89,29 @@ const projectsData = [
 
 const Project = () => {
   return (
-    <section id="projects" className="lg:h-auto bg-[#101010] p-10 pt-32 justify-center items-center flex flex-col">
+    <section id="projects" className="lg:h-auto bg-[#0a0a0a] p-10 pt-32 justify-center items-center flex flex-col">
       <Helmet>
         <title>Sojan O Nelson | Software Developer</title>
         <meta name="description" content="Portfolio of Sojan O Nelson, a skilled Software Developer." />
         <meta name="keywords" content="Sojan, Software Developer, Web Developer" />
       </Helmet>
-      <h1 className="text-4xl text-center poppins-bold mb-8 text-white">Projects</h1>
+      <h1 className="text-4xl text-center poppins-bold mb-8 text-[#00ff41]">Projects</h1>
       <Link to='https://forms.gle/5a8Yh36SDheu18jg7' className="grid grid-cols-1 lg:px-10 pt-10 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projectsData.map((project) => (
           <motion.div
             key={project.id}
-            className="bg-[#1a1a1a] rounded-lg p-2 lg:p-6 shadow-lg flex flex-col cursor-pointer  items-center text-center"
+            className="bg-[#0d1117] border border-[#30363d] rounded-lg p-2 lg:p-6 shadow-lg shadow-[#00ff41]/10 flex flex-col cursor-pointer  items-center text-center hover:border-[#00ff41] transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
           >
             <img src={project.image} alt={project.name} className="w-full h-48 object-cover rounded-md mb-4" />
-            <h2 className="lg:text-2xl text-xl poppins-bold text-white mb-2">{project.name}</h2>
-            <p className="poppins-regular text-sm lg:text-lg text-white mb-4">{project.description}</p>
-            <h3 className="text-lg poppins-bold text-gray-300 mb-2">Technologies:</h3>
+            <h2 className="lg:text-2xl text-xl poppins-bold text-[#00ff41] mb-2">{project.name}</h2>
+            <p className="poppins-regular text-sm lg:text-lg text-[#c9d1d9] mb-4">{project.description}</p>
+            <h3 className="text-lg poppins-bold text-[#58a6ff] mb-2">Technologies:</h3>
             <ul className="flex flex-wrap   justify-center gap-4">
 
               {project.technologies.map((tech, index) => (
-                <li key={index} className="flex items-center gap-2 text-gray-300 poppins-regular">
-                  {tech.icon && <span className=" text-sm lg:text-xl">{tech.icon}</span>}
+                <li key={index} className="flex items-center gap-2 text-[#8b949e] poppins-regular">
+                  {tech.icon && <span className=" text-sm lg:text-xl text-[#00ff41]">{tech.icon}</span>}
                   <span>{tech.name}</span>
                 </li>
               ))}
