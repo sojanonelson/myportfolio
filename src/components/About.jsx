@@ -317,15 +317,15 @@ const About = () => {
                         </div>
                       ))}
                     </div>
-                    <a 
-                      href="/projects" 
+                    <p 
+                      
                       className="inline-flex items-center mt-6 text-green-400 hover:text-green-300 transition-colors"
                     >
-                      View all projects
+                      Scroll down to view all project
                       <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </a>
+                    </p>
                   </motion.div>
                 )}
               </div>
