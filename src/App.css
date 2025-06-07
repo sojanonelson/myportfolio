@@ -108,16 +108,4 @@
 
 
 
-/* Snowflake animation */
-@keyframes snowflake {
-  from {
-    transform: translateY(-10px) rotate(0deg);
-  }
-  to {
-    transform: translateY(100vh) rotate(360deg);
-  }
-}
-
-
-
 

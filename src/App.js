@@ -7,7 +7,9 @@ import About from "./components/About";
 import Project from "./components/Project";
 import Home from "./components/Home";
 import Contact from "./components/Contact";
+import CareerRouteMap from "./components/CareerMap";
 import "./App.css"
+
 
 const App = () => (
   <Router>
@@ -53,6 +55,7 @@ const MainContent = () => {
       <About />
       <Project/>
       <Contact/>
+      <CareerRouteMap/>
       <AIAssistantIcon />
     </div>
   );
@@ -69,6 +72,7 @@ const Navbar = ({ navigate, isMenuOpen, setIsMenuOpen }) => (
         <NavItem navigate={navigate} to="about" label="About" />
         <NavItem navigate={navigate} to="projects" label="Projects" />
         <NavItem navigate={navigate} to="contact" label="Contact" />
+         <NavItem navigate={navigate} to="career" label="Career" />
       </ul>
       
       {/* Mobile Menu Button */}
@@ -96,6 +100,7 @@ const Navbar = ({ navigate, isMenuOpen, setIsMenuOpen }) => (
           <MobileNavItem navigate={navigate} to="about" label="About" setIsMenuOpen={setIsMenuOpen} />
           <MobileNavItem navigate={navigate} to="projects" label="Projects" setIsMenuOpen={setIsMenuOpen} />
           <MobileNavItem navigate={navigate} to="contact" label="Contact" setIsMenuOpen={setIsMenuOpen} />
+           <MobileNavItem navigate={navigate} to="career" label="Career" setIsMenuOpen={setIsMenuOpen} />
         </ul>
       </div>
     )}
