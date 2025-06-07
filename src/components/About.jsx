@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Profile from "../assets/profile.jpg";
 import { Helmet } from 'react-helmet';
 import { Shield, Code, Database, Server, Terminal, GraduationCap, Award, Cpu } from "lucide-react";
+import './About.css'
 
 const About = () => {
   const [activeSection, setActiveSection] = useState("skills");
@@ -119,7 +120,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#111111] py-20 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen  bg-gradient-to-b from-[#0a0a0a] to-[#111111] py-20 px-4 sm:px-6 lg:px-8"
     >
       <Helmet>
         <title>Sojan O Nelson | Cybersecurity & Full-Stack Developer</title>

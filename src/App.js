@@ -47,7 +47,7 @@ const MainContent = () => {
   }, [location]);
 
   return (
-    <div className="App bg-[#0a0a0a] text-white">
+    <div className="App bg-[#0a0a0a] text-white ">
       <Navbar navigate={navigate} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <Home viewCount={viewCount}/>
       <About />

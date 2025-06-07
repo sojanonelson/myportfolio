@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <section id="contact" className="h-[40vh] bg-gradient-to-b from-[#020202] to-[#101010] p-10 flex flex-col justify-center items-center">
        <Helmet>
-    <title>Sojan O Nelson | Software Developer</title>
+    <title>Sojan  | Software Developer</title>
     <meta name="description" content="Portfolio of Sojan O Nelson, a skilled Software Developer." />
     <meta name="keywords" content="Sojan, Software Developer, Web Developer" />
     
@@ -34,7 +34,7 @@ const Contact = () => {
 
         {/* Instagram */}
         <motion.a
-          href="https://instagram.com/sojxnn"
+          href="https://instagram.com/sojaaannn"
           className="text-white text-4xl"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.95 }}

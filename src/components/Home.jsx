@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Lottie from "react-lottie";
-import Developer from '../assets/developer.json';
+import Developer from '../assets/dev.json';
 import Particles from '../components/Particles';
 import { Helmet } from 'react-helmet';
-import { Github, Linkedin, FileText, Eye } from "lucide-react";
+import { Github, Linkedin, FileText, Eye,Youtube } from "lucide-react";
 
 const Home = ({ viewCount }) => {
   const defaultOptions = {
@@ -22,12 +22,14 @@ const Home = ({ viewCount }) => {
     <section id="home" className="min-h-screen relative bg-gradient-to-b from-[#0a0a0a] to-[#111111] flex items-center justify-center w-full text-white overflow-hidden px-4">
       {/* <Particles /> */}
       <Helmet>
-        <title>Sojan O Nelson | Cybersecurity Analyst & MERN Developer</title>
+        <title>Sojan | Cybersecurity Analyst & MERN Developer</title>
         <meta name="description" content="Portfolio of Sojan O Nelson, a skilled Cybersecurity Analyst and MERN Stack Developer." />
         <meta name="keywords" content="Sojan, Cybersecurity, Ethical Hacking, MERN Developer, Web Developer" />
       </Helmet>
       
       <div className="container mx-auto flex flex-col md:flex-row overflow-hidden items-center justify-between py-20">
+      
+
         <motion.div
           className="text-center md:text-left md:w-1/2"
           initial={{ opacity: 0, y: -50 }}
@@ -79,39 +81,79 @@ const Home = ({ viewCount }) => {
             ></iframe>
           </div>
           
-          <motion.div
-            className="flex flex-wrap gap-3 justify-center md:justify-start"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.7 }}
-          >
-            <a
-              href="https://drive.google.com/file/d/1DyPfWou7L4kro2tIsQqcDgzhsXvhbsmZ/view?usp=drive_link"
-              download
-              className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium flex items-center space-x-2 transition-colors duration-300"
-            >
-              <FileText size={18} />
-              <span>Resume</span>
-            </a>
-            <a
-              href="https://github.com/sojanonelson"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-md font-medium flex items-center space-x-2 transition-colors duration-300"
-            >
-              <Github size={18} />
-              <span>GitHub</span>
-            </a>
-            <a
-              href="https://linkedin.com/in/sojanonelson"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium flex items-center space-x-2 transition-colors duration-300"
-            >
-              <Linkedin size={18} />
-              <span>LinkedIn</span>
-            </a>
-          </motion.div>
+        <motion.div
+  className="flex flex-wrap gap-3 justify-center md:justify-start"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1, delay: 0.7 }}
+>
+  <motion.a
+    href="https://drive.google.com/file/d/1DyPfWou7L4kro2tIsQqcDgzhsXvhbsmZ/view?usp=drive_link"
+    download
+    className="px-4 py-2 bg-yellow-600 hover:bg-yellow-500 text-black rounded-md font-medium flex items-center space-x-2 transition-colors duration-300"
+    whileHover={{ 
+      scale: 1.05,
+      boxShadow: "0 8px 25px rgba(202, 138, 4, 0.4)",
+      y: -2
+    }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  >
+    <FileText size={18} />
+    <span>Resume</span>
+  </motion.a>
+  
+  <motion.a
+    href="https://github.com/sojanonelson"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-md font-medium flex items-center space-x-2 transition-colors duration-300"
+    whileHover={{ 
+      scale: 1.05,
+      boxShadow: "0 8px 25px rgba(75, 85, 99, 0.4)",
+      y: -2
+    }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  >
+    <Github size={18} />
+    <span>GitHub</span>
+  </motion.a>
+  
+  <motion.a
+    href="https://linkedin.com/in/sojanonelson"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium flex items-center space-x-2 transition-colors duration-300"
+    whileHover={{ 
+      scale: 1.05,
+      boxShadow: "0 8px 25px rgba(37, 99, 235, 0.4)",
+      y: -2
+    }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  >
+    <Linkedin size={18} />
+    <span>LinkedIn</span>
+  </motion.a>
+  
+  <motion.a
+    href="https://www.youtube.com/@CodeBrotherIn"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md font-medium flex items-center space-x-2 transition-colors duration-300"
+    whileHover={{ 
+      scale: 1.05,
+      boxShadow: "0 8px 25px rgba(220, 38, 38, 0.4)",
+      y: -2
+    }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  >
+    <Youtube size={18} />
+    <span>Youtube</span>
+  </motion.a>
+</motion.div>
         </motion.div>
         
         <motion.div 
@@ -120,7 +162,7 @@ const Home = ({ viewCount }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <div className="w-[280px] h-[280px] md:w-[400px] md:h-[400px] relative">
+          <div className="w-[380px] h-[380px] md:w-[600px] md:h-[600px] relative">
             <div className="absolute inset-0 rounded-full "></div>
             <Lottie options={defaultOptions} />
           </div>

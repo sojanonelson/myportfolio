@@ -4,7 +4,7 @@ import ChordBeat from "../assets/project/chordbeat.png";
 import Spotify from '../assets/project/spotify.png';
 import Lara from '../assets/project/Lara.jpg';
 import Ecom from '../assets/project/Ecom.jpg';
-import Portfolio from '../assets/project/Portfolio.jpg'
+import Portfolio from '../assets/project/Portfolio.png'
 import OnlineLearn  from '../assets/project/OnlineLearn.jpg'
 import { Helmet } from 'react-helmet';
 // Import React Icons
@@ -91,7 +91,7 @@ const Project = () => {
   return (
     <section id="projects" className="lg:h-auto bg-[#0a0a0a] p-10 pt-32 justify-center items-center flex flex-col">
       <Helmet>
-        <title>Sojan O Nelson | Software Developer</title>
+        <title>Sojan  | Software Developer</title>
         <meta name="description" content="Portfolio of Sojan O Nelson, a skilled Software Developer." />
         <meta name="keywords" content="Sojan, Software Developer, Web Developer" />
       </Helmet>
