@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Lottie from "react-lottie";
 import Developer from '../assets/dev.json';
 import Particles from '../components/Particles';
 import { Helmet } from 'react-helmet';
 import { Github, Linkedin, FileText, Eye,Youtube } from "lucide-react";
+import { useEffect } from "react";
 
 const Home = ({ viewCount }) => {
   const defaultOptions = {
@@ -17,6 +18,22 @@ const Home = ({ viewCount }) => {
   };
 
   const name = "SOJAN O NELSON";
+
+  const [ipAddress, setIpAddress] = useState("");
+
+useEffect(() => {
+  const fetchIP = async () => {
+    try {
+      const res = await fetch("https://api.ipify.org?format=json");
+      const data = await res.json();
+      setIpAddress(data.ip); // Will return IPv4
+    } catch (err) {
+      console.error("Failed to fetch IP address:", err);
+    }
+  };
+
+  fetchIP();
+}, []);
 
   return (
     <section id="home" className="min-h-screen relative bg-gradient-to-b from-[#0a0a0a] to-[#111111] flex items-center justify-center w-full text-white overflow-hidden px-4">
@@ -40,14 +57,43 @@ const Home = ({ viewCount }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center px-3 py-1 rounded-full bg-green-900/20 text-green-400 border border-green-400/30 mb-4 text-sm"
+            className="inline-flex items-center select-none px-3 py-1 rounded-full bg-green-900/20 text-green-400 border border-green-400/30 mb-4 text-sm"
           >
             <Eye className="mr-2" size={16} />
             {viewCount} Views
           </motion.div>
+
+{ipAddress && (
+  <motion.p
+    className="text-sm select-none text-gray-400 mt-2 my-4 flex flex-wrap"
+    initial="hidden"
+    animate="visible"
+    variants={{
+      visible: { transition: { staggerChildren: 0.07 } }
+    }}
+  >
+    Your IP:{" "}
+    <span className="text-green-400 select-none flex ml-2">
+      {ipAddress.split("").map((char, index) => (
+        <motion.span
+          key={index}
+          className="inline-block"
+          variants={{
+            hidden: { opacity: 0, scale: 0, rotate: -45 },
+            visible: { opacity: 1, scale: 1, rotate: 0, transition: { type: "spring", stiffness: 300 } }
+          }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  </motion.p>
+)}
+
+
           
           <motion.h1
-            className="text-2xl lg:text-3xl font-mono text-green-400 mb-2"
+            className="text-2xl lg:text-3xl font-mono select-none text-green-400 mb-2"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -65,21 +111,24 @@ const Home = ({ viewCount }) => {
           </motion.h1>
           
           <motion.p
-            className="text-lg md:text-xl text-gray-300 mb-6 max-w-lg"
+            className="text-lg md:text-xl select-none text-gray-300 mb-6 max-w-lg"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <span className="text-green-400">Cybersecurity Analyst</span> & <span className="text-green-400">MERN Stack Developer</span> building secure and scalable web applications.
+            <span className="text-green-400 select-none">Cybersecurity Analyst</span> & <span className="text-green-400">MERN Stack Developer</span> building secure and scalable web applications.
           </motion.p>
           
-          <div className="mb-8">
+          <div className="mb-0">
             <iframe 
               src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=112534" 
               style={{ border: "none", width: "100%", height: "auto" }}
               className="max-w-lg"
             ></iframe>
           </div>
+ 
+
+
           
         <motion.div
   className="flex flex-wrap gap-3 justify-center md:justify-start"
