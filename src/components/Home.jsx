@@ -137,7 +137,7 @@ useEffect(() => {
   transition={{ duration: 1, delay: 0.7 }}
 >
   <motion.a
-    href="https://drive.google.com/file/d/1DyPfWou7L4kro2tIsQqcDgzhsXvhbsmZ/view?usp=drive_link"
+    href="https://drive.google.com/file/d/1-brGkuJvhmJZ6EJFRU3cXQ74kDld8mEi/view?usp=sharing"
     download
     className="px-4 py-2 bg-yellow-600 hover:bg-yellow-500 text-black rounded-md font-medium flex items-center space-x-2 transition-colors duration-300"
     whileHover={{ 
