@@ -63,7 +63,7 @@ const Contact = () => {
           <FaEnvelope className="hover:text-yellow-400 transition-colors duration-300" />
         </motion.a>
       </motion.div>
-      <p className='text-gray-400 py-5'>Site last updated on October 2025</p>
+      
     </section>
   );
 };

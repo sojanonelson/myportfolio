@@ -24,7 +24,8 @@ const projectsData = [
       { name: "Node.js", icon: <FaNodeJs /> },
       { name: "MongoDB", icon: <SiMongodb /> },
       { name: "Express.js", icon: <SiExpress /> }
-    ]
+    ],
+    link:"https://chordbeat.vercel.app"
   },
   {
     id: 2,
@@ -59,7 +60,8 @@ const projectsData = [
       { name: "React.js", icon: <FaReact /> },
       { name: "Node.js", icon: <FaNodeJs /> },
       { name: "MongoDB", icon: <SiMongodb /> },
-    ]
+    ],
+    link:"https://www.kasavuaalayam.com"
   },
   {
     id: 5,
@@ -70,7 +72,8 @@ const projectsData = [
       { name: "React.js", icon: <FaReact /> },
       { name: "CSS3", icon: null },
       { name: "JavaScript", icon: null }
-    ]
+    ],
+    link:"https://sojanonelson.github.io/myportfolio"
   },
   {
     id: 6,
@@ -96,8 +99,9 @@ const Project = () => {
         <meta name="keywords" content="Sojan, Software Developer, Web Developer" />
       </Helmet>
       <h1 className="text-4xl text-center poppins-bold mb-8 text-[#00ff41]">Projects</h1>
-      <Link to='https://forms.gle/5a8Yh36SDheu18jg7' className="grid grid-cols-1 lg:px-10 pt-10 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div  className="grid grid-cols-1 lg:px-10 pt-10 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projectsData.map((project) => (
+          <Link to={project.link}>
           <motion.div
             key={project.id}
             className="bg-[#0d1117] border border-[#30363d] rounded-lg p-2 lg:p-6 shadow-lg shadow-[#00ff41]/10 flex flex-col cursor-pointer  items-center text-center hover:border-[#00ff41] transition-colors duration-300"
@@ -117,8 +121,9 @@ const Project = () => {
               ))}
             </ul>
           </motion.div>
+          </Link>
         ))}
-      </Link>
+      </div>
     </section>
   );
 };
