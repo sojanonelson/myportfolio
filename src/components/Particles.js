@@ -1,3 +1,5 @@
+"use client";
+
 // src/components/Particles.js
 import React, { useEffect } from 'react';
 

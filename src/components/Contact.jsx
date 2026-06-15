@@ -1,17 +1,13 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaLinkedin, FaInstagram,FaGithub  } from 'react-icons/fa';
-import { Helmet } from 'react-helmet';
+import { FaEnvelope, FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
 
 const Contact = () => {
   return (
     <section id="contact" className="h-[40vh] bg-gradient-to-b from-[#020202] to-[#101010] p-10 flex flex-col justify-center items-center">
-       <Helmet>
-    <title>Sojan  | Software Developer</title>
-    <meta name="description" content="Portfolio of Sojan O Nelson, a skilled Software Developer." />
-    <meta name="keywords" content="Sojan, Software Developer, Web Developer" />
-    
-  </Helmet>
+
       <h1 className="text-2xl font-light text-orange-400 mb-2">Get in Touch</h1>
       <h1 className="lg:text-6xl text-xl poppins-bold  text-white mb-10">Contact Me</h1>
       

@@ -1,23 +1,15 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import ChordBeat from "../assets/project/chordbeat.png";
-import Spotify from '../assets/project/spotify.png';
-import Lara from '../assets/project/Lara.jpg';
-import Ecom from '../assets/project/Ecom.png';
-import Portfolio from '../assets/project/Portfolio.png'
-import OnlineLearn  from '../assets/project/OnlineLearn.jpg'
-import PersonaGifts from '../assets/project/PersonaGifts.png'
-import Lunchify from '../assets/project/Lunchify.png'
-import { Helmet } from 'react-helmet';
 import { FaReact, FaNodeJs, FaPython, FaSpotify, FaGlobe } from 'react-icons/fa';
 import { SiMongodb, SiExpress, SiTensorflow, SiPostman, SiFirebase } from 'react-icons/si';
-import { Link } from 'react-router-dom';
 
 const liveProjects = [
   {
     id: 1,
     name: "Kasavu Aalayam",
-    image: Ecom,
+    image: "/assets/project/Ecom.png",
     description: "A premium e-commerce platform for traditional and contemporary Indian ethnic wear, featuring a worldwide shipping system.",
     technologies: [
       { name: "React.js", icon: <FaReact /> },
@@ -29,7 +21,7 @@ const liveProjects = [
   {
     id: 2,
     name: "Persona Gifts",
-    image: PersonaGifts,
+    image: "/assets/project/PersonaGifts.png",
     description: "A specialized e-commerce store for personalized gifts and prints based in the UK, offering custom product designs.",
     technologies: [
       { name: "React.js", icon: <FaReact /> },
@@ -45,7 +37,7 @@ const personalProjects = [
   {
     id: 1,
     name: "ChordBeats",
-    image: ChordBeat,
+    image: "/assets/project/chordbeat.png",
     description: "A digital studio web application for creating music beats and virtual instruments.",
     technologies: [
       { name: "React.js", icon: <FaReact /> },
@@ -58,7 +50,7 @@ const personalProjects = [
   {
     id: 2,
     name: "Spotify Clone",
-    image: Spotify,
+    image: "/assets/project/spotify.png",
     description: "A clone of Spotify with essential features including playlists, search, and playback.",
     technologies: [
       { name: "MERN Stack", icon: <FaReact /> },
@@ -69,7 +61,7 @@ const personalProjects = [
   {
     id: 3,
     name: "Personal Voice Assistant",
-    image: Lara,
+    image: "/assets/project/Lara.jpg",
     description: "A voice-controlled application to perform various computer tasks, such as opening apps and setting reminders.",
     technologies: [
       { name: "Python", icon: <FaPython /> },
@@ -81,7 +73,7 @@ const personalProjects = [
   {
     id: 4,
     name: "Portfolio Website",
-    image: Portfolio,
+    image: "/assets/project/Portfolio.png",
     description: "A personal portfolio to showcase skills, projects, and achievements.",
     technologies: [
       { name: "React.js", icon: <FaReact /> },
@@ -93,7 +85,7 @@ const personalProjects = [
   {
     id: 5,
     name: "Lunchify",
-    image: Lunchify,
+    image: "/assets/project/Lunchify.png",
     description: "A smart, simple lunch ordering system for teams and institutions, streamlining food management and coordination.",
     technologies: [
       { name: "React.js", icon: <FaReact /> },
@@ -104,7 +96,7 @@ const personalProjects = [
   {
     id: 6,
     name: "Online Learning Platform",
-    image: OnlineLearn,
+    image: "/assets/project/OnlineLearn.jpg",
     description: "A platform for hosting and accessing online courses with video streaming and quizzes.",
     technologies: [
       { name: "React.js", icon: <FaReact /> },
@@ -115,10 +107,9 @@ const personalProjects = [
   },
 ];
 
-const ProjectCard = ({ project, isProfessional }) => (
-  <Link to={project.link} target={project.link?.startsWith('http') ? "_blank" : "_self"}>
+const ProjectCard = ({ project, isProfessional }) => {
+  const CardContent = (
     <motion.div
-      key={project.id}
       className="bg-[#0d1117] border border-[#30363d] rounded-lg p-2 lg:p-6 shadow-lg shadow-[#00ff41]/10 flex flex-col cursor-pointer items-center text-center hover:border-[#00ff41] transition-colors duration-300 h-full relative"
       whileHover={{ scale: 1.05 }}
     >
@@ -149,17 +140,22 @@ const ProjectCard = ({ project, isProfessional }) => (
         </div>
       )}
     </motion.div>
-  </Link>
-);
+  );
+
+  if (project.link) {
+    return (
+      <a href={project.link} target="_blank" rel="noopener noreferrer">
+        {CardContent}
+      </a>
+    );
+  }
+
+  return CardContent;
+};
 
 const Project = () => {
   return (
     <section id="projects" className="lg:h-auto bg-[#0a0a0a] p-10 pt-32 justify-center items-center flex flex-col">
-      <Helmet>
-        <title>Sojan | Software Developer</title>
-        <meta name="description" content="Portfolio of Sojan O Nelson, a skilled Software Developer." />
-        <meta name="keywords" content="Sojan, Software Developer, Web Developer" />
-      </Helmet>
       
       <h1 className="text-4xl text-center poppins-bold mb-12 text-[#00ff41]">Projects</h1>
 

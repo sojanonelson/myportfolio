@@ -1,28 +1,18 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
-import "tailwindcss/tailwind.css";
+import { useRouter, usePathname } from "next/navigation";
 import axios from "axios";
 import { Bot } from "lucide-react";
-import About from "./components/About";
-import Project from "./components/Project";
-import Home from "./components/Home";
-import Contact from "./components/Contact";
-import CareerRouteMap from "./components/CareerMap";
-import "./App.css";
+import About from "./About";
+import Project from "./Project";
+import Home from "./Home";
+import Contact from "./Contact";
+import CareerRouteMap from "./CareerMap";
 
-const App = () => (
-  <Router>
-    <MainContent />
-  </Router>
-);
-
-const MainContent = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+const PortfolioView = () => {
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [viewCount, setViewCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,20 +35,26 @@ const MainContent = () => {
   }, []);
 
   useEffect(() => {
-    const sectionId = location.pathname.substring(1);
+    // Extract section ID from path (e.g. "/about/" -> "about")
+    const sectionId = pathname.replace(/^\/|\/$/g, "");
     if (sectionId) {
-      document
-        .getElementById(sectionId)
-        ?.scrollIntoView({ behavior: "smooth" });
+      // Small timeout to ensure the DOM is fully hydrated/rendered
+      const timer = setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }, [location]);
+  }, [pathname]);
 
   return (
-    <div className="App bg-[#0a0a0a] text-white ">
+    <div className="App bg-[#0a0a0a] text-white">
       <Navbar
-        navigate={navigate}
+        router={router}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
@@ -72,15 +68,15 @@ const MainContent = () => {
   );
 };
 
-const Navbar = ({ navigate, isMenuOpen, setIsMenuOpen }) => (
+const Navbar = ({ router, isMenuOpen, setIsMenuOpen }) => (
   <nav className="fixed top-0 left-0 w-full bg-[#0a0a0a]/90 backdrop-blur-sm py-3 z-50 select-none border-b border-green-500/20">
     <div className="container mx-auto px-4 flex justify-center items-center">
       <ul className="hidden md:flex space-x-8">
-        <NavItem navigate={navigate} to="home" label="Home" />
-        <NavItem navigate={navigate} to="about" label="About" />
-        <NavItem navigate={navigate} to="projects" label="Projects" />
-        <NavItem navigate={navigate} to="contact" label="Contact" />
-        <NavItem navigate={navigate} to="career" label="Career" />
+        <NavItem router={router} to="home" label="Home" />
+        <NavItem router={router} to="about" label="About" />
+        <NavItem router={router} to="projects" label="Projects" />
+        <NavItem router={router} to="contact" label="Contact" />
+        <NavItem router={router} to="career" label="Career" />
       </ul>
 
       <button
@@ -124,31 +120,31 @@ const Navbar = ({ navigate, isMenuOpen, setIsMenuOpen }) => (
       <div className="md:hidden bg-[#0a0a0a] border-t border-green-500/20">
         <ul className="flex flex-col space-y-4 p-4">
           <MobileNavItem
-            navigate={navigate}
+            router={router}
             to="home"
             label="Home"
             setIsMenuOpen={setIsMenuOpen}
           />
           <MobileNavItem
-            navigate={navigate}
+            router={router}
             to="about"
             label="About"
             setIsMenuOpen={setIsMenuOpen}
           />
           <MobileNavItem
-            navigate={navigate}
+            router={router}
             to="projects"
             label="Projects"
             setIsMenuOpen={setIsMenuOpen}
           />
           <MobileNavItem
-            navigate={navigate}
+            router={router}
             to="contact"
             label="Contact"
             setIsMenuOpen={setIsMenuOpen}
           />
           <MobileNavItem
-            navigate={navigate}
+            router={router}
             to="career"
             label="Career"
             setIsMenuOpen={setIsMenuOpen}
@@ -159,10 +155,10 @@ const Navbar = ({ navigate, isMenuOpen, setIsMenuOpen }) => (
   </nav>
 );
 
-const NavItem = ({ navigate, to, label }) => (
+const NavItem = ({ router, to, label }) => (
   <li>
     <button
-      onClick={() => navigate(`/${to === "home" ? "" : to}`)}
+      onClick={() => router.push(`/${to === "home" ? "" : to}`)}
       className="relative py-4 text-white hover:text-green-400 transition-colors duration-300 group"
     >
       {label}
@@ -171,11 +167,11 @@ const NavItem = ({ navigate, to, label }) => (
   </li>
 );
 
-const MobileNavItem = ({ navigate, to, label, setIsMenuOpen }) => (
+const MobileNavItem = ({ router, to, label, setIsMenuOpen }) => (
   <li>
     <button
       onClick={() => {
-        navigate(`/${to === "home" ? "" : to}`);
+        router.push(`/${to === "home" ? "" : to}`);
         setIsMenuOpen(false);
       }}
       className="w-full text-left text-white hover:text-green-400 py-2 px-4 transition-colors duration-300"
@@ -255,4 +251,4 @@ const AIAssistantIcon = () => {
   );
 };
 
-export default App;
+export default PortfolioView;

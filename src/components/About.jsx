@@ -1,9 +1,11 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Profile from "../assets/profile.jpeg";
-import { Helmet } from 'react-helmet';
 import { Shield, Code, Database, Server, Terminal, GraduationCap, Award, Cpu } from "lucide-react";
 import './About.css'
+
+const Profile = "/assets/profile.jpeg";
 
 const About = () => {
   const [activeSection, setActiveSection] = useState("skills");
@@ -122,11 +124,7 @@ const About = () => {
       id="about"
       className="min-h-screen  bg-gradient-to-b from-[#0a0a0a] to-[#111111] py-20 px-4 sm:px-6 lg:px-8"
     >
-      <Helmet>
-        <title>Sojan O Nelson | Cybersecurity & Full-Stack Developer</title>
-        <meta name="description" content="Cybersecurity Analyst and MERN Stack Developer with expertise in building secure web applications" />
-        <meta name="keywords" content="Sojan, Cybersecurity, Ethical Hacking, MERN Developer, Web Security" />
-      </Helmet>
+
 
       <div className="max-w-7xl mx-auto">
         <motion.h1 

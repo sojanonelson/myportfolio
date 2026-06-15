@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Lottie from "react-lottie";
-import Developer from '../assets/dev.json';
-import Particles from '../components/Particles';
-import { Helmet } from 'react-helmet';
-import { Github, Linkedin, FileText, Eye,Youtube } from "lucide-react";
-import { useEffect } from "react";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
+import Developer from '../../public/assets/dev.json';
+import Particles from './Particles';
+import { Github, Linkedin, FileText, Eye, Youtube } from "lucide-react";
 
 const Home = ({ viewCount }) => {
   const defaultOptions = {
@@ -58,11 +59,6 @@ useEffect(() => {
   return (
     <section id="home" className="min-h-screen relative bg-gradient-to-b from-[#0a0a0a] to-[#111111] flex items-center justify-center w-full text-white overflow-hidden px-4">
       <Particles />
-      <Helmet>
-        <title>Sojan | Cybersecurity Analyst & Software Engineer</title>
-        <meta name="description" content="Portfolio of Sojan O Nelson, a skilled Cybersecurity Analyst and Software Engineer." />
-        <meta name="keywords" content="Sojan, Cybersecurity, Ethical Hacking, Software Engineer, Web Developer" />
-      </Helmet>
       
       <div className="container mx-auto flex flex-col md:flex-row overflow-hidden items-center justify-between py-20 relative z-10">
         <motion.div
@@ -226,7 +222,7 @@ useEffect(() => {
         >
           <div className="w-[380px] h-[380px] md:w-[600px] md:h-[600px] relative">
             <div className="absolute inset-0 rounded-full "></div>
-            <Lottie options={defaultOptions} />
+            <Lottie options={defaultOptions} eventListeners={[]} />
           </div>
         </motion.div>
       </div>
